@@ -2,6 +2,8 @@
 
 LAN co-op mod for Easy Delivery Co (BepInEx 5).
 
+Fork of ARMADA2025AA11's mod — adapted for the latest game version.
+
 ## Features
 
 - Host/Client LAN networking over UDP
@@ -35,4 +37,4 @@ Important options:
 
 ## Source
 
-https://github.com/ARMADA2025AA11/Easy-Delivery-Co-lan-coop-mod
+https://github.com/bladasone/Easy-Delivery-Co-lan-coop-mod

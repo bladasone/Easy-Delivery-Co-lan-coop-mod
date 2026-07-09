@@ -59,7 +59,7 @@ internal static class GameAccess
         {
             var cam = Camera.main;
             if (cam == null)
-                cam = UnityEngine.Object.FindObjectOfType<Camera>();
+                cam = UnityEngine.Object.FindFirstObjectByType<Camera>();
 
             if (cam == null)
                 return false;
@@ -421,7 +421,7 @@ internal static class GameAccess
             hasCar = true;
             pos = rb.position;
             rot = rb.rotation;
-            vel = rb.velocity;
+            vel = rb.linearVelocity;
             angVel = rb.angularVelocity;
             return true;
         }
@@ -1096,34 +1096,90 @@ internal static class GameAccess
         payloadName = string.Empty;
 
         var controller = TryFindObjectOfTypeByName("sCharacterController");
-        if (controller is not Component comp)
-            return false;
-
-        try
+        if (controller is Component comp)
         {
-            // Common pattern: controller has a pickup point Transform with the held object as a child.
-            // Strings seen in Assembly-CSharp: pickupPoint, heldItem, payload.
-            var t = comp.GetType();
-
-            Transform? pickupPoint = null;
-            var ppField = t.GetField("pickupPoint", Any);
-            if (ppField?.GetValue(comp) is Transform pp)
-                pickupPoint = pp;
-            else
+            try
             {
-                var ppProp = t.GetProperty("pickupPoint", Any);
-                if (ppProp?.GetValue(comp, null) is Transform pp2)
-                    pickupPoint = pp2;
-            }
+                var t = comp.GetType();
 
-            if (pickupPoint != null)
-            {
-                for (var i = 0; i < pickupPoint.childCount; i++)
+                Transform? pickupPoint = null;
+                var ppField = t.GetField("pickupPoint", Any);
+                if (ppField?.GetValue(comp) is Transform pp)
+                    pickupPoint = pp;
+                else
                 {
-                    var child = pickupPoint.GetChild(i);
-                    if (child == null)
-                        continue;
-                    var name = NormalizePayloadName(child.name);
+                    var ppProp = t.GetProperty("pickupPoint", Any);
+                    if (ppProp?.GetValue(comp, null) is Transform pp2)
+                        pickupPoint = pp2;
+                }
+
+                if (pickupPoint != null)
+                {
+                    for (var i = 0; i < pickupPoint.childCount; i++)
+                    {
+                        var child = pickupPoint.GetChild(i);
+                        if (child == null)
+                            continue;
+                        var name = NormalizePayloadName(child.name);
+                        if (IsPayloadName(name))
+                        {
+                            payloadName = name;
+                            return true;
+                        }
+                    }
+                }
+
+                if (TryGetLikelyHeldObjectName(comp, out var held))
+                {
+                    held = NormalizePayloadName(held);
+                    if (IsPayloadName(held))
+                    {
+                        payloadName = held;
+                        return true;
+                    }
+                }
+            }
+            catch
+            {
+                // fall through to next checks
+            }
+        }
+
+        // New version: try sCharacterInteraction.payloadPivot children
+        var interaction = TryFindObjectOfTypeByName("sCharacterInteraction");
+        if (interaction is Component ic)
+        {
+            try
+            {
+                var pivotField = ic.GetType().GetField("payloadPivot", Any);
+                if (pivotField?.GetValue(ic) is Transform pivot)
+                {
+                    for (var i = 0; i < pivot.childCount; i++)
+                    {
+                        var child = pivot.GetChild(i);
+                        if (child == null) continue;
+                        var name = NormalizePayloadName(child.name);
+                        if (IsPayloadName(name))
+                        {
+                            payloadName = name;
+                            return true;
+                        }
+                    }
+                }
+            }
+            catch { }
+        }
+
+        // New version: try sItemManager.heldItem
+        var itemMgr = TryFindObjectOfTypeByName("sItemManager");
+        if (itemMgr != null)
+        {
+            try
+            {
+                var heldField = itemMgr.GetType().GetField("heldItem", Any);
+                if (heldField?.GetValue(itemMgr) is GameObject held && held != null)
+                {
+                    var name = NormalizePayloadName(held.name);
                     if (IsPayloadName(name))
                     {
                         payloadName = name;
@@ -1131,21 +1187,7 @@ internal static class GameAccess
                     }
                 }
             }
-
-            // Fallback: inspect heldItem-style fields/properties.
-            if (TryGetLikelyHeldObjectName(comp, out var held))
-            {
-                held = NormalizePayloadName(held);
-                if (IsPayloadName(held))
-                {
-                    payloadName = held;
-                    return true;
-                }
-            }
-        }
-        catch
-        {
-            return false;
+            catch { }
         }
 
         return false;
@@ -1391,7 +1433,7 @@ internal static class GameAccess
             {
                 rb.position = pos;
                 rb.rotation = rot;
-                rb.velocity = vel;
+                rb.linearVelocity = vel;
                 rb.angularVelocity = angVel;
             }
             catch
@@ -1862,6 +1904,11 @@ internal static class GameAccess
             "sSaveSelectMenu",
             "sSceneLoader",
             "sGameManager",
+            // New game version types (v0.3+)
+            "ChooseExe",
+            "ScreenSystem",
+            "DesktopDotExe",
+            "ScreenProgram",
         };
 
         var methodNames = new[]
@@ -1913,6 +1960,25 @@ internal static class GameAccess
                         // try next overload
                     }
                 }
+            }
+        }
+
+        // New version: try ScreenSystem.Resume(null) since it takes 1 parameter (programIndex).
+        {
+            var ss = TryFindObjectOfTypeByName("ScreenSystem");
+            if (ss != null)
+            {
+                try
+                {
+                    var resume = ss.GetType().GetMethod("Resume", Any, null, new[] { typeof(int) }, null);
+                    if (resume != null)
+                    {
+                        resume.Invoke(ss, new object?[] { (int?)null });
+                        reason = "Invoked ScreenSystem.Resume(null)";
+                        return true;
+                    }
+                }
+                catch { }
             }
         }
 

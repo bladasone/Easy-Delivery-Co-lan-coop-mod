@@ -7,7 +7,7 @@ $ErrorActionPreference = "Stop"
 $root = Split-Path -Parent $PSScriptRoot
 $pkgRoot = Join-Path $PSScriptRoot "package"
 $modDir = Join-Path $pkgRoot "BepInEx\plugins\EasyDeliveryCoLanCoop"
-$outZip = Join-Path $root "releases\Thunderstore-EasyDeliveryCoLanCoop-v0.2.19.zip"
+$outZip = Join-Path $root "releases\Thunderstore-EasyDeliveryCoLanCoop-v0.3.0.zip"
 $dllPath = Join-Path $root "bin\$Configuration\netstandard2.1\EasyDeliveryCoLanCoop.dll"
 
 if (-not (Test-Path $dllPath)) {
