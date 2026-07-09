@@ -133,8 +133,8 @@ internal static class PhysicsVisualClone
 
         var rb = dst.AddComponent<Rigidbody>();
         rb.mass = srcRb.mass;
-        rb.drag = srcRb.drag;
-        rb.angularDrag = srcRb.angularDrag;
+        rb.linearDamping = srcRb.linearDamping;
+        rb.angularDamping = srcRb.angularDamping;
         rb.useGravity = srcRb.useGravity;
         rb.isKinematic = srcRb.isKinematic;
         rb.interpolation = srcRb.interpolation;

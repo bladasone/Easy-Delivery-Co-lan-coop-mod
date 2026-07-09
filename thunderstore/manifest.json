@@ -1,8 +1,8 @@
 {
   "name": "EasyDeliveryCoLanCoop",
-  "version_number": "0.2.19",
-  "website_url": "https://github.com/ARMADA2025AA11/Easy-Delivery-Co-lan-coop-mod",
-  "description": "LAN co-op mod for Easy Delivery Co (Host/Client networking, player/car sync, save sync, vehicle SFX sync).",
+  "version_number": "0.3.0",
+  "website_url": "https://github.com/bladasone/Easy-Delivery-Co-lan-coop-mod",
+  "description": "LAN co-op mod for Easy Delivery Co (fork, updated for latest game version).",
   "dependencies": [
     "BepInEx-BepInExPack-5.4.2304"
   ]

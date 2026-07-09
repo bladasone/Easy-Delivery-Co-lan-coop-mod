@@ -23,40 +23,70 @@
     </Reference>
 
     <Reference Include="UnityEngine.CoreModule">
-      <HintPath>..\EasyDeliveryCo steam version\EasyDeliveryCo_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
+      <HintPath>..\Easy Delivery Co\EasyDeliveryCo_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
       <Private>false</Private>
     </Reference>
     <Reference Include="UnityEngine">
-      <HintPath>..\EasyDeliveryCo steam version\EasyDeliveryCo_Data\Managed\UnityEngine.dll</HintPath>
+      <HintPath>..\Easy Delivery Co\EasyDeliveryCo_Data\Managed\UnityEngine.dll</HintPath>
       <Private>false</Private>
     </Reference>
     <Reference Include="UnityEngine.SharedInternalsModule">
-      <HintPath>..\EasyDeliveryCo steam version\EasyDeliveryCo_Data\Managed\UnityEngine.SharedInternalsModule.dll</HintPath>
+      <HintPath>..\Easy Delivery Co\EasyDeliveryCo_Data\Managed\UnityEngine.SharedInternalsModule.dll</HintPath>
       <Private>false</Private>
     </Reference>
 
     <Reference Include="UnityEngine.PhysicsModule">
-      <HintPath>..\EasyDeliveryCo steam version\EasyDeliveryCo_Data\Managed\UnityEngine.PhysicsModule.dll</HintPath>
+      <HintPath>..\Easy Delivery Co\EasyDeliveryCo_Data\Managed\UnityEngine.PhysicsModule.dll</HintPath>
       <Private>false</Private>
     </Reference>
 
     <Reference Include="UnityEngine.AssetBundleModule">
-      <HintPath>..\EasyDeliveryCo steam version\EasyDeliveryCo_Data\Managed\UnityEngine.AssetBundleModule.dll</HintPath>
+      <HintPath>..\Easy Delivery Co\EasyDeliveryCo_Data\Managed\UnityEngine.AssetBundleModule.dll</HintPath>
       <Private>false</Private>
     </Reference>
 
     <Reference Include="UnityEngine.TextRenderingModule">
-      <HintPath>..\EasyDeliveryCo steam version\EasyDeliveryCo_Data\Managed\UnityEngine.TextRenderingModule.dll</HintPath>
+      <HintPath>..\Easy Delivery Co\EasyDeliveryCo_Data\Managed\UnityEngine.TextRenderingModule.dll</HintPath>
       <Private>false</Private>
     </Reference>
 
     <Reference Include="UnityEngine.IMGUIModule">
-      <HintPath>..\EasyDeliveryCo steam version\EasyDeliveryCo_Data\Managed\UnityEngine.IMGUIModule.dll</HintPath>
+      <HintPath>..\Easy Delivery Co\EasyDeliveryCo_Data\Managed\UnityEngine.IMGUIModule.dll</HintPath>
       <Private>false</Private>
     </Reference>
 
     <Reference Include="UnityEngine.AudioModule">
-      <HintPath>..\EasyDeliveryCo steam version\EasyDeliveryCo_Data\Managed\UnityEngine.AudioModule.dll</HintPath>
+      <HintPath>..\Easy Delivery Co\EasyDeliveryCo_Data\Managed\UnityEngine.AudioModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+
+    <Reference Include="UnityEngine.InputModule">
+      <HintPath>..\Easy Delivery Co\EasyDeliveryCo_Data\Managed\UnityEngine.InputModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+
+    <Reference Include="UnityEngine.InputLegacyModule">
+      <HintPath>..\Easy Delivery Co\EasyDeliveryCo_Data\Managed\UnityEngine.InputLegacyModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+
+    <Reference Include="UnityEngine.UIElementsModule">
+      <HintPath>..\Easy Delivery Co\EasyDeliveryCo_Data\Managed\UnityEngine.UIElementsModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+
+    <Reference Include="UnityEngine.UI">
+      <HintPath>..\Easy Delivery Co\EasyDeliveryCo_Data\Managed\UnityEngine.UI.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+
+    <Reference Include="Unity.TextMeshPro">
+      <HintPath>..\Easy Delivery Co\EasyDeliveryCo_Data\Managed\Unity.TextMeshPro.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+
+    <Reference Include="UnityEngine.AnimationModule">
+      <HintPath>..\Easy Delivery Co\EasyDeliveryCo_Data\Managed\UnityEngine.AnimationModule.dll</HintPath>
       <Private>false</Private>
     </Reference>
   </ItemGroup>

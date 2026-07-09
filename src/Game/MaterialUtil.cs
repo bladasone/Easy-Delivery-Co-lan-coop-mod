@@ -35,7 +35,7 @@ internal static class MaterialUtil
         }
 
         // Last resort: any renderer in scene.
-        var anyRenderer = UnityEngine.Object.FindObjectOfType<Renderer>();
+        var anyRenderer = UnityEngine.Object.FindAnyObjectByType<Renderer>();
         if (anyRenderer != null)
         {
             var mats = anyRenderer.sharedMaterials;

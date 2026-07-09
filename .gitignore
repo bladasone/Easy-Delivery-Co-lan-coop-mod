@@ -22,14 +22,15 @@ Desktop.ini
 *.snupkg
 packages/
 
-# Local dependency binaries (do not commit)
+# BepInEx DLLs (get from BepInEx 5 distribution)
 lib/*.dll
 
 # Tool cache
 tools/.store/
 
-# Local release bundles
-releases/**
+# Local release bundles (committed for GitHub releases)
+releases/
+!releases/*.zip
 !releases/.gitkeep
 
 # Test and coverage artifacts
@@ -37,6 +38,9 @@ TestResults/
 coverage/
 *.coverage
 *.coveragexml
+
+# Thunderstore build artifacts
+thunderstore/package/
 
 # BepInEx / runtime artifacts (if copied here accidentally)
 BepInEx/config/*.cfg

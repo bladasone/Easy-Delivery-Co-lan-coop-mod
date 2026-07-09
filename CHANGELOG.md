@@ -2,6 +2,27 @@
 
 All notable changes to this project are documented in this file.
 
+## [0.3.0] - 2026-07-10
+
+### Added (fork)
+
+- Fork от [ARMADA2025AA11/Easy-Delivery-Co-lan-coop-mod](https://github.com/ARMADA2025AA11/Easy-Delivery-Co-lan-coop-mod)
+- Адаптация под новую версию Easy Delivery Co (обновлённые типы меню, скрипты, ассембли)
+
+### Changed
+
+- Обновлены рефлексивные вызовы: `ChooseExe`, `ScreenSystem`, `DesktopDotExe`, `ScreenProgram` вместо `sMainMenu`/`sMenuManager`/`sSaveMenu`
+- `sCharacterController.pickupPoint` → `sCharacterInteraction.payloadPivot` + `sItemManager.heldItem`
+- `ScreenSystem.Resume(null)` вместо parameterless `ScreenSystem.Resume()`
+- HintPath в `.csproj` обновлены для новой структуры папок игры
+- Добавлены Reference: `UnityEngine.InputModule`, `InputLegacyModule`, `UIElementsModule`, `UI`, `TextMeshPro`, `AnimationModule`
+- Исправлены Unity API deprecation warnings (CS0618)
+
+### Fixed
+
+- Компиляция под новую версию Unity/игры
+- Обновлено меню авто-входа в мир после главного меню
+
 ## [0.2.19] - 2026-03-03
 
 ### Changed
