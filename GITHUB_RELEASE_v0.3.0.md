@@ -2,37 +2,45 @@
 
 LAN coop mod for Easy Delivery Co (BepInEx 5).
 
-**Fork of [ARMADA2025AA11/Easy-Delivery-Co-lan-coop-mod](https://github.com/ARMADA2025AA11/Easy-Delivery-Co-lan-coop-mod)** — adapted for the latest game version.
+**Форк [ARMADA2025AA11/Easy-Delivery-Co-lan-coop-mod](https://github.com/ARMADA2025AA11/Easy-Delivery-Co-lan-coop-mod)** — адаптирован под новую версию игры.
 
-## What is new
+---
 
-- **Full compatibility with the latest Easy Delivery Co update.**
-- Updated reflection calls for new menu types: `ChooseExe`, `ScreenSystem`, `DesktopDotExe`, `ScreenProgram` (replaces old `sMainMenu`/`sMenuManager`/`sSaveMenu`).
-- Fixed item carrying: now uses `sCharacterInteraction.payloadPivot` + `sItemManager.heldItem` (old `sCharacterController.pickupPoint` removed).
-- Fixed `ScreenSystem.Resume(null)` to properly exit the main menu.
-- Added missing Unity assembly references: InputModule, InputLegacyModule, UIElementsModule, UI, TextMeshPro, AnimationModule.
-- Fixed all deprecated Unity API calls (CS0618 warnings: `FindObjectOfType` → `FindFirstObjectByType`/`FindAnyObjectByType`, `Rigidbody.drag` → `linearDamping`, `Rigidbody.velocity` → `linearVelocity`).
-- Clean build: 0 errors, 0 warnings.
+## Что нового / What's new
 
-## Installation
+- **Полная совместимость с последним обновлением Easy Delivery Co.**
+- Обновлены рефлексивные вызовы для новых типов меню: `ChooseExe`, `ScreenSystem`, `DesktopDotExe`, `ScreenProgram` (вместо старых `sMainMenu`/`sMenuManager`/`sSaveMenu`).
+- Исправлен перенос предметов: теперь используется `sCharacterInteraction.payloadPivot` + `sItemManager.heldItem` (старого `sCharacterController.pickupPoint` больше нет).
+- Исправлен `ScreenSystem.Resume(null)` для корректного выхода из главного меню.
+- Добавлены недостающие ссылки на сборки Unity: InputModule, InputLegacyModule, UIElementsModule, UI, TextMeshPro, AnimationModule.
+- Исправлены все предупреждения об устаревших API Unity (CS0618).
+- Чистая сборка: 0 ошибок, 0 предупреждений.
 
-1. Install BepInEx 5 (Mono) into the game folder.
-2. Copy `EasyDeliveryCoLanCoop.dll` to:
+## Установка / Installation
+
+1. Установите BepInEx 5 (Mono) в папку игры.
+2. Скопируйте `EasyDeliveryCoLanCoop.dll` в:
    `BepInEx/plugins/EasyDeliveryCoLanCoop/`
-3. Launch game normally or with `--lancoop-server` / `--lancoop-client`.
+3. Запустите игру с аргументом `--lancoop-server` (хост) или `--lancoop-client` (клиент).
 
-## Compatibility notes
+## Запуск / Launch options
 
-- Host and client should use the same mod version.
-- Project status: experimental.
-- Requires the latest Easy Delivery Co version (with `ChooseExe`/`ScreenSystem` menu types).
+- `--lancoop-server` или `--lancoop-host` — запуск как сервер
+- `--lancoop-client` — запуск как клиент
+- `--lancoop-off` — отключить мод
 
-## Recommended release asset
+## Совместимость / Compatibility
 
-Attach this file to the GitHub Release:
+- Хост и клиент должны использовать одну версию мода.
+- Статус проекта: experimental.
+- Требуется последняя версия Easy Delivery Co (с новыми типами меню).
+
+## Релизный архив / Release asset
+
+Прикрепите к релизу:
 
 - `EasyDeliveryCoLanCoop-v0.3.0.zip`
 
-Local path in this repo:
+Файл в репозитории:
 
 - `releases/EasyDeliveryCoLanCoop-v0.3.0.zip`
